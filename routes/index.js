@@ -6,7 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/vote_info_check', function(req, res, next) {
+router.post('/vote_info_check', function(req, res, next) {
+  const token = req.body;
+
   res.render('vote_info_check', {
     session: '第一場',
     group: 'A組',

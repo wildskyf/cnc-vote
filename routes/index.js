@@ -1,5 +1,9 @@
+var mysql = require('mysql')
 var express = require('express');
 var router = express.Router();
+var config = require('../config/database')
+
+var connection = mysql.createConnection(config);
 
 /* GET home page. */
 router.get('/', (req, res, next) => {

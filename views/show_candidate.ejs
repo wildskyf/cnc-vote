@@ -5,7 +5,23 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  yo
+    <div class="cans">
+      <% candidates.forEach( can => { %>
+        <div class="can_unit" data-id="<%= can.candidateId %>">
+          <%= can.chName %>
+        </div>
+      <% }) %>
+    </div>
   </body>
+ <script>
+   window.onload = () => {
+     document.querySelectorAll('.can_unit').forEach( can => {
+       can.addEventListener('click', e => {
+         var canId = e.target.dataset.id;
+         console.log(canId);
+       });
+     });
+   };
+ </script>
 </html>
 

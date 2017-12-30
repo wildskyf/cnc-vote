@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check Vote Info</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form action="/show_candidate">
+      <h2 class="check-vote-title">Please Confirm Information:</h2>
+      <ul class="check-vote-info">
+        <li><%= session %></li>
+        <li><%= group %></li>
+        <li><%= name %></li>
+      </ul>
+      <div class="check-bote-cta">
+        <input type="submit" value="Next Step">
+      </div>
+    </form>
+  </body>
+</html>

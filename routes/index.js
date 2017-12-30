@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.post('/vote_info_check', function(req, res, next) {
+router.post('/vote_info_check', (req, res, next) => {
   const token = req.body;
 
   res.render('vote_info_check', {
@@ -16,7 +16,7 @@ router.post('/vote_info_check', function(req, res, next) {
   });
 });
 
-router.get('/show_candidate', function(req, res, next) {
+router.get('/show_candidate', (req, res, next) => {
   res.render('show_candidate', {
 
   });

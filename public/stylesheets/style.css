@@ -66,5 +66,39 @@ body {
       padding: 1em;
       background-color: rgba(255, 255, 255, 0.7);
       box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3); }
+  body .fixed-win {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 20vh 0 25vh; }
+    body .fixed-win.show {
+      display: block; }
+    body .fixed-win .win-inner {
+      background: #fff;
+      max-width: 980px;
+      margin: auto; }
+      body .fixed-win .win-inner ul {
+        padding: 40px 80px;
+        margin: 0;
+        height: 50vh;
+        text-align: left; }
+        body .fixed-win .win-inner ul li {
+          line-height: 1.5em; }
+    body .fixed-win .win-footer:after {
+      display: block;
+      clear: both;
+      content: ''; }
+    body .fixed-win .win-footer .confirm-btn, body .fixed-win .win-footer .cancel-btn {
+      float: right;
+      padding: .75em 1em;
+      margin: 10px;
+      background: #FAFFD1;
+      border: 1px solid #aaa;
+      color: #777;
+      cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

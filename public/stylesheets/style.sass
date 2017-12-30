@@ -1,10 +1,10 @@
-$yellow: #FFFBF0
+$yellow: #FAFFD1
 $green: #A1FFCE
 
 body
   background: $green
-  background: -webkit-linear-gradient(to right, #FAFFD1, $green)
-  background: linear-gradient(to right, #FAFFD1, $green)
+  background: -webkit-linear-gradient(to right, $yellow, $green)
+  background: linear-gradient(to right, $yellow, $green)
   padding: 10vh 0 20vh
   margin: 0
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
@@ -77,4 +77,44 @@ body
       padding: 1em
       background-color: rgba(255,255,255,0.7)
       box-shadow: 1px 1px 10px rgba(0,0,0,0.3)
+
+  .fixed-win
+    background: rgba(0,0,0,0.5)
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    display: none
+    padding: 20vh 0 25vh
+
+    &.show
+      display: block
+
+    .win-inner
+      background: #fff
+      max-width: 980px
+      margin: auto
+
+      ul
+        padding: 40px 80px
+        margin: 0
+        height: 50vh;
+        text-align: left
+        li
+          line-height: 1.5em;
+
+    .win-footer
+      &:after
+        display: block
+        clear: both
+        content: ''
+      .confirm-btn, .cancel-btn
+        float: right
+        padding: .75em 1em
+        margin: 10px
+        background: $yellow
+        border: 1px solid #aaa
+        color: #777
+        cursor: pointer
 

@@ -12,16 +12,44 @@
         </div>
       <% }) %>
     </div>
+    <div class="fixed-win">
+      <div class="win-inner">
+        <ul></ul>
+        <div class="win-footer">
+          <div class="cancel-btn">Cancel</div>
+          <div class="confirm-btn">Confirm</div>
+        </div>
+      </div>
+    </div>
   </body>
- <script>
-   window.onload = () => {
-     document.querySelectorAll('.can_unit').forEach( can => {
-       can.addEventListener('click', e => {
-         var canId = e.target.dataset.id;
-         console.log(canId);
-       });
-     });
-   };
- </script>
+  <script>
+  window.onload = () => {
+    document.querySelectorAll('.can_unit').forEach( can => {
+      can.addEventListener('click', e => {
+        var canId = e.target.dataset.id;
+        fetch('/api/candidate/'+ canId).then( a => a.json() ).then( res => {
+          var $fixed_win = document.querySelector('.fixed-win');
+          var $ul = document.querySelector('.fixed-win .win-inner ul');
+          $ul.innerHTML = `
+            <li>Chinese Name: ${res.chnName}</li>
+            <li>English Name: ${res.enName}</li>
+            <li>Chinese Skill: ${res.chnSkill}</li>
+            <li>English Skill: ${res.enSkill}</li>
+          `;
+          $fixed_win.classList.add('show');
+        });
+      });
+    });
+
+    document.querySelector('.confirm-btn').addEventListener('click', e => {
+      e.target.parentNode.parentNode.parentNode.classList.remove('show');
+    });
+
+    document.querySelector('.cancel-btn').addEventListener('click', e => {
+      e.target.parentNode.parentNode.parentNode.classList.remove('show')
+    });
+
+  };
+  </script>
 </html>
 

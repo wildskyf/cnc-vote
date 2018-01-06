@@ -27,25 +27,23 @@ router.post('/', (req, res, next) => {
     }
     else {
       res.render('post_redirect', {
-        r_id: rountId,
+        r_id: roundId,
         token: token
       })
     }
-
   })
-
 });
 
 router.post('/vote_info_check', (req, res, next) => {
   const { token, r_id } = req.body;
-
-  connection.query(``, (err, result) => {
+  connection.query(`SELECT voteTitle, category, session FROM rounds NATURAL JOIN votes WHERE roundId = '${r_id}'`, (err, result) => {
+    const { voteTitle, category, session } = result[0];
     res.render('vote_info_check', {
       token: token,
       r_id: r_id,
-      session: '第一場',
-      group: 'A組',
-      name: '無威鄰大大'
+      name: voteTitle,
+      session: session,
+      group: category
     });
   })
 });
@@ -53,7 +51,7 @@ router.post('/vote_info_check', (req, res, next) => {
 router.get('/show_candidate', (req, res, next) => {
   const { token, r_id } = req.body;
 
-  connection.query(`select candidateId, chName from candidatesForVote natural join candidates where roundId = 1 ;`, (err, result) => {
+  connection.query(`select candidateId, chName from candidatesForVote natural join candidates where roundId = ${r_id} ;`, (err, result) => {
     res.render('show_candidate', {
       r_id: r_id,
       token: token,
